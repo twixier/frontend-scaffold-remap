@@ -1,0 +1,15 @@
+{
+  "name": "gulp-remap",
+  "version": "1.0.0",
+  "description": "Remapping of basepaths for a configurationfile found in gulp-scaffold",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "gulp-scaffold",
+    "frontend-scaffold"
+  ],
+  "author": "Martin Hansen <twixier>",
+  "license": "ISC"
+}
