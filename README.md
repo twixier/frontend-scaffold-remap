@@ -4,6 +4,7 @@ In our frontend-scaffold we have task which merges our different paths with the 
 The task has been moved to this module to provide a more dynamic way of handling the merge and errors.
 
 # Path: Example
+```json
   "path": {
       "base": "./sites/all/themes/#THEME#/",
       "css": {
@@ -21,5 +22,6 @@ The task has been moved to this module to provide a more dynamic way of handling
         "target": "images/optimized"  
       }
   }
-  
+```
+
 See: https://github.com/dwarfhq/frontend-scaffold
