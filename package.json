@@ -10,6 +10,7 @@
   "author": "Martin Hansen <twixier>",
   "license": "ISC",
   "devDependencies": {
+    "frontend-scaffold-log": "twixier/frontend-scaffold-log",
     "gulp-util": "3.0.7"
   }
 }
