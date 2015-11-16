@@ -1,19 +1,27 @@
 "use strict";
 
-var util = require('gulp-util'),
+var util = require('gulp-util')
+    log = require('frontend-scaffold-log'),
     pluginError = util.PluginError,
     path = {};
 
 const PLUGIN_NAME = "frontend-scaffold-remap";
 
+function error (message) {
+  throw new util.PluginError(PLUGIN_NAME, message);
+}
+
 function remap (options) {
   if(typeof options !== "object") {
-    throw new pluginError(PLUGIN_NAME, 'Error');
+    error('cfg.options is not an object. Please fix and try again!');
   }
 
   if(Object.keys(options).length) {
     // Check if basepath has been defined, it not - there is no reason for path correction
-    if(typeof options.basepath === "undefined") return options;
+    if(typeof options.basepath === "undefined") {
+      log('Basepath was not set in cfg.path. Paths written in config.json will not be modified.');
+      return options;
+    }
 
     // Iterate through paths
     for(var dir in options) {
@@ -32,17 +40,19 @@ function remap (options) {
               }
             break;
             default: // Emit warning since we dont support this type of property (number, int etc)
-              throw new pluginError(PLUGIN_NAME, path[dir][property] + ': Type not supported');
+              throw new pluginError(PLUGIN_NAME, path[dir][property] + ': Type not supported - (' + (typeof path[dir][property]) +')');
             break;
           }
         }
       }
     }
     
+    log('Your paths have been merged successfully');    
     return path;
-   
+   } else if (Object.keys(options).length === 0) {
+      error('Your configuration object was empty. Please fix cfg.path and try again!');
    } else {
-    throw new pluginError(PLUGIN_NAME, 'Warning: Options was not defined!');
+      error('This is awkward! Something went wrong, and we dont know what...');
    }
 }
 
