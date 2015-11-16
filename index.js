@@ -1,6 +1,6 @@
 "use strict";
 
-var util = require('gulp-util'),
+var util = require('gulp-util'), 
     log = require('frontend-scaffold-log'),
     pluginError = util.PluginError,
     path = {};
