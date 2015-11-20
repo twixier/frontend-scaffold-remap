@@ -3,12 +3,11 @@
 var util = require('gulp-util'), 
     log = require('frontend-scaffold-log'),
     pluginError = util.PluginError,
-    path = {};
-
-const PLUGIN_NAME = "frontend-scaffold-remap";
+    path = {},
+    plugin_name = "frontend-scaffold-remap";
 
 function error (message) {
-  throw new util.PluginError(PLUGIN_NAME, message);
+  throw new util.PluginError(plugin_name, message);
 }
 
 function remap (options) {
@@ -40,7 +39,7 @@ function remap (options) {
               }
             break;
             default: // Emit warning since we dont support this type of property (number, int etc)
-              throw new pluginError(PLUGIN_NAME, path[dir][property] + ': Type not supported - (' + (typeof path[dir][property]) +')');
+              throw new pluginError(plugin_name, path[dir][property] + ': Type not supported - (' + (typeof path[dir][property]) +')');
             break;
           }
         }
