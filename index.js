@@ -18,7 +18,10 @@ function remap (options) {
   if(Object.keys(options).length) {
     // Check if basepath has been defined, it not - there is no reason for path correction
     if(typeof options.basepath === "undefined") {
-      log('Basepath was not set in cfg.path. Paths written in config.json will not be modified.');
+      log({
+        title: "Pathfinder",
+        message: 'Basepath was not set in cfg.path. Paths written in config.json will not be modified.'
+      });
       return options;
     }
 
@@ -46,7 +49,10 @@ function remap (options) {
       }
     }
     
-    log('Your paths have been merged successfully');    
+    log({
+      title: "Pathfinder",
+      message: 'Your paths have been merged successfully'
+    });    
     return path;
    } else if (Object.keys(options).length === 0) {
       error('Your configuration object was empty. Please fix cfg.path and try again!');
