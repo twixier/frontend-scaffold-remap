@@ -1,6 +1,6 @@
 {
   "name": "frontend-scaffold-remap",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Remapping of basepaths for a configurationfile found in gulp-scaffold",
   "main": "index.js",
   "keywords": [
@@ -9,7 +9,7 @@
   ],
   "author": "Martin Hansen <twixier>",
   "license": "ISC",
-  "devDependencies": {
+  "dependencies": {
     "frontend-scaffold-log": "twixier/frontend-scaffold-log",
     "gulp-util": "3.0.7"
   }
