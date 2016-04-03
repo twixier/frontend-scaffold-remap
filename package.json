@@ -1,6 +1,6 @@
 {
   "name": "frontend-scaffold-remap",
-  "version": "1.2",
+  "version": "1.2.0",
   "description": "Remapping of basepaths for a configurationfile found in gulp-scaffold",
   "main": "index.js",
   "keywords": [
