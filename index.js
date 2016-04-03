@@ -4,10 +4,18 @@ var util = require('gulp-util'),
     log = require('frontend-scaffold-log'),
     pluginError = util.PluginError,
     path = {},
-    plugin_name = "frontend-scaffold-remap";
+    plugin_name = "frontend-scaffold-remap",
+		stringPatternAppendix = "!";
 
 function error (message) {
   throw new util.PluginError(plugin_name, message);
+}
+
+function patterncheck (pattern) {	
+	if(pattern.indexOf('!') > -1) {
+		return true;	
+	}
+	return false;	
 }
 
 function remap (options) {
@@ -32,13 +40,17 @@ function remap (options) {
         path[dir] = options[dir];
         // Iterate through each property 
         for(var property in path[dir]) {
+					// Check for custom marker
           switch(typeof path[dir][property]) {
             case "string": // Join cfg.path.base with current property
-              path[dir][property] = options.basepath + path[dir][property];
+							var boolPattern = patterncheck(path[dir][property]); 
+
+              path[dir][property] = (boolPattern ? stringPatternAppendix : "") +  options.basepath + (boolPattern ? path[dir][property].substring(1) : path[dir][property]);
             break;
             case "object": // Join cfg.path.base with current property
               for(var i = 0; i < path[dir][property].length; i++) {
-                path[dir][property][i] = options.basepath + path[dir][property][i];
+								var boolPattern = patterncheck(path[dir][property][i]);
+                path[dir][property][i] = (boolPattern ? stringPatternAppendix : "") + options.basepath + (boolPattern ? path[dir][property][i].substring(1) : path[dir][property][i]);
               }
             break;
             default: // Emit warning since we dont support this type of property (number, int etc)
